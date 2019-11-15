@@ -1,3 +1,7 @@
+
+
+
+
 # PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
@@ -14,16 +18,18 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
+
+#OLD
+#OLDdefault: &default
+ #OLD adapter: postgresql
+  #OLDencoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+ #OLD pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
-  <<: *default
-  database: rails-mister-cocktail_development
+#OLDdevelopment:
+ #OLD <<: *default
+  #OLDdatabase: rails-mister-cocktail_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -55,9 +61,9 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: rails-mister-cocktail_test
+#OLDtest:
+ #OLD <<: *default
+ #OLD database: rails-mister-cocktail_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -78,8 +84,23 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
+#OLDproduction:
+ #OLD <<: *default
+ #OLD database: rails-mister-cocktail_production
+#OLD  username: rails-mister-cocktail
+ #OLD password: <%= ENV['RAILS-MISTER-COCKTAIL_DATABASE_PASSWORD'] %>
+#OLD
+
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
   <<: *default
-  database: rails-mister-cocktail_production
-  username: rails-mister-cocktail
-  password: <%= ENV['RAILS-MISTER-COCKTAIL_DATABASE_PASSWORD'] %>
+  database: rails-mister-cocktail_development
+
+test:
+  <<: *default
+  database: rails-mister-cocktail_test
